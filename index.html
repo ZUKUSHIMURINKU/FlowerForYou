@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine's Sunflowers</title>
+<style>
+    body {
+        background-color: #f7f7f7;
+        font-family: Arial, sans-serif;
+    }
+    #container {
+        text-align: center;
+        margin-top: 50px;
+    }
+    .sunflower {
+        width: 200px;
+        height: 300px;
+        position: relative;
+        display: inline-block;
+    }
+    .center {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: #8B4513; /* Brown color for the center */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .stem {
+        width: 20px;
+        height: 100px;
+        background-color: green;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .petal {
+        position: absolute;
+        width: 60px;
+        height: 100px;
+        background-color: #ffd700; /* Yellow color for petals */
+        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        transform-origin: 50% 50%;
+    }
+    .petal1 {
+        top: 5%;
+        left: 45%;
+        transform: rotate(30deg);
+    }
+    .petal2 {
+        top: 85%;
+        left: 45%;
+        transform: rotate(30deg);
+    }
+    .petal3 {
+        top: 45%;
+        left: 5%;
+        transform: rotate(120deg);
+    }
+    .petal4 {
+        top: 45%;
+        left: 85%;
+        transform: rotate(-120deg);
+    }
+    .petal5 {
+        top: 45%;
+        left: 45%;
+    }
+    .message {
+        margin-top: 20px;
+        font-size: 18px;
+        line-height: 1.5;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+</head>
+<body>
+
+<div id="container">
+    <div class="sunflower">
+        <div class="center"></div>
+        <div class="stem"></div>
+        <!-- Petals -->
+        <div class="petal petal1" onclick="showMessage(this)"></div>
+        <div class="petal petal2" onclick="showMessage(this)"></div>
+        <div class="petal petal3" onclick="showMessage(this)"></div>
+        <div class="petal petal4" onclick="showMessage(this)"></div>
+        <div class="petal petal5" onclick="showMessage(this)"></div>
+    </div>
+    <div class="message">
+        <p>Flowers for you</p>
+        <p>Happy Valentine's</p>
+    </div>
+</div>
+
+<script>
+    function showMessage(petal) {
+        if (!petal.dataset.clicked) {
+            const messages = [
+                "In your smile, I see something more beautiful than the stars.",
+                "Every moment with you feels like a dream come true.",
+                "You are the reason I believe in love.",
+                "Your love is the best gift I've ever received.",
+                "With you, every day feels like Valentine's Day."
+            ];
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            const message = document.querySelector('.message');
+            message.innerHTML = messages[randomIndex];
+            petal.dataset.clicked = true;
+        }
+    }
+</script>
+
+</body>
+</html>
+
